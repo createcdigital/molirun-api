@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Example Code</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
     <!-- highlight.js -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 </head>
@@ -150,7 +150,7 @@
         user.p1_teesize = "L(175/92A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
 
         user.p1_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
-        user.p1_card_number = "280682199101090008";
+        user.p1_card_number = "2806821991010900020";
         user.p1_phone = "13564137185";
 
         user.p1_emergency_name = "紧急联系人";
@@ -163,7 +163,7 @@
         user.p2_teesize = "L(175/92A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
 
         user.p2_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
-        user.p2_card_number = "280682199101090007";
+        user.p2_card_number = "";
         user.p2_phone = "13816954340";
 
         user.p2_emergency_name = "紧急联系人";
@@ -176,7 +176,7 @@
         user.kids_teesize = "110以下"; //("110以下"), "110-130")
 
         user.kids_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
-        user.kids_card_number = "280682199101090009";
+        user.kids_card_number = "";
         user.kids_guardian_name = "法定监护人姓名";
         user.kids_guardian_phone = "13564137188";
 

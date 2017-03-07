@@ -113,8 +113,8 @@ class UserController extends Controller
     protected function checkRepeatCardNumber(Request $request)
     {
         $p1_card_number = $request->p1_card_number;
-        $p2_card_number = $request->p2_card_number;
-        $kids_card_number = $request->kids_card_number;
+        $p2_card_number = $request->p2_card_number != null ? $request->p2_card_number : "unknown1";
+        $kids_card_number = $request->kids_card_number != null ? $request->kids_card_number : "unknown2";
 
         if($p1_card_number != $p2_card_number
             && $p1_card_number != $kids_card_number
