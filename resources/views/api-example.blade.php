@@ -95,7 +95,7 @@
 
 
         // 接口:查询参赛信息
-        var card_number = "280682199101090016";
+        var card_number = "280682199101090023";
         $.getJSON('http://molirun.api.createcdigital.com/user/id/' + card_number, function(data){
             console.log(data[0]);
         });
@@ -203,7 +203,7 @@
 
 
         // 接口:查询参赛信息
-        var card_number = "280682199101090016";
+        var card_number = "280682199101090023";
         $.getJSON('/user/id/' + card_number, function(data){
             console.log(data[0]);
         });
