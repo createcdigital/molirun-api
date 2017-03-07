@@ -116,35 +116,60 @@ class UserController extends Controller
         $p2_card_number = $request->p2_card_number;
         $kids_card_number = $request->kids_card_number;
 
-        $models = User::where('p1_card_type', $p1_card_number)
-                        ->orWhere('p2_card_number', $p2_card_number)
-                        ->orWhere('kids_card_number', $kids_card_number)
-                        ->get();
+        if($p1_card_number != $p2_card_number
+            && $p1_card_number != $kids_card_number
+            && $p2_card_number != $kids_card_number)
+        {
+            $models = User::where('p1_card_number', $p1_card_number)
+                            ->orWhere('p2_card_number', $p2_card_number)
+                            ->orWhere('kids_card_number', $kids_card_number)
+                            ->get();
 
-        if(count($models) > 0)
+            if(count($models) > 0)
+            {
+                $message = "";
+
+                foreach ($models as $model)
+                {
+                    if($model->p1_card_number == $p1_card_number && strrpos($message, $p1_card_number) == false)
+                        $message .= "成年参赛者(证件号码: ".$p1_card_number."), 已存在相同证件号码的参赛者!";
+
+                    if($model->p2_card_number == $p2_card_number && strrpos($message, $p2_card_number) == false)
+                    {
+                        $message .= ($message == "" ? "": ", ")."成年参赛者2(证件号码: ".$p2_card_number."), 已存在相同证件号码的参赛者!";
+                    }
+
+                    if($model->kids_card_number == $kids_card_number && strrpos($message, $kids_card_number) == false)
+                    {
+                        $message .= ($message == "" ? "": ", ")."未成年参赛者(证件号码: ".$kids_card_number."), 已存在相同证件号码的参赛者!";
+                    }
+                }
+
+                return $message;
+
+            }else
+                return null;
+        }else
         {
             $message = "";
 
-            foreach ($models as $model)
+
+            if($p1_card_number == $p2_card_number)
+                $message .= "提交报名信息中, 成年参赛者(证件号码: ".$p1_card_number.") 与 成年参赛者2(证件号码: ".$p2_card_number.") 的证件号码相同!";
+            if($p1_card_number == $kids_card_number)
+                $message .= "提交报名信息中, 成年参赛者(证件号码: ".$p1_card_number.") 与 未成年参赛者(证件号码: ".$kids_card_number.") 的证件号码相同!";
+            if($p2_card_number == $kids_card_number)
+                $message .= "提交报名信息中, 成年参赛者2(证件号码: ".$p1_card_number.") 与 未成年参赛者(证件号码: ".$kids_card_number.") 的证件号码相同!";
+
+            if($p1_card_number == $p2_card_number
+                && $p1_card_number ==  $kids_card_number
+                    && $p2_card_number == $kids_card_number)
             {
-                if($model->p1_card_number == $p1_card_number && strrpos($message, $p1_card_number) == false)
-                    $message .= "成年参赛者(证件号码: ".$p1_card_number."), 已存在相同证件号码的参赛者!";
-
-                if($model->p2_card_number == $p2_card_number && strrpos($message, $p2_card_number) == false)
-                {
-                    $message .= ($message == "" ? "": ", ")."成年参赛者2(证件号码: ".$p2_card_number."), 已存在相同证件号码的参赛者!";
-                }
-
-                if($model->kids_card_number == $kids_card_number && strrpos($message, $kids_card_number) == false)
-                {
-                    $message .= ($message == "" ? "": ", ")."未成年参赛者(证件号码: ".$kids_card_number."), 已存在相同证件号码的参赛者!";
-                }
+                $message = "提交报名信息中, 成年参赛者(证件号码: ".$p1_card_number.") 与 成年参赛者2(证件号码: ".$p2_card_number.") 与 未成年参赛者(证件号码: ".$p2_card_number.") 的证件号码相同!";
             }
 
             return $message;
-
-        }else
-            return null;
+        }
     }
 
     public function getByCardNumber($card_number)

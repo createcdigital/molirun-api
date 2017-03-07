@@ -27,7 +27,7 @@
         user.subscribe_time = "";
 
         // form
-        user.grouptype = "2"; // ("5km", "10km", "family)
+        user.grouptype = "2"; // ("5km", "10km", "family")
         user.p1_tag = "#极限运动";
 
         // p1
@@ -45,11 +45,11 @@
 
         // p2
         user.p2_name = "成人参赛者2姓名";
-        user.p2_sex = "女";
+        user.p2_sex = "女"; //("男", "女")
         user.p2_birthday = "1991-01-11";
-        user.p2_teesize = "L(175/92A)";
+        user.p2_teesize = "L(175/92A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
 
-        user.p2_card_type = "身份证";
+        user.p2_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
         user.p2_card_number = "280682199101090022";
         user.p2_phone = "13816954340";
 
@@ -58,11 +58,11 @@
 
         // kids
         user.kids_name = "未成年参赛者姓名";
-        user.kids_sex = "女";
+        user.kids_sex = "女"; //("男", "女")
         user.kids_birthday = "2000-01-11";
-        user.kids_teesize = "110以下";
+        user.kids_teesize = "110以下"; //("110以下"), "110-130")
 
-        user.kids_card_type = "身份证";
+        user.kids_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
         user.kids_card_number = "280682199101090023";
         user.kids_guardian_name = "法定监护人姓名";
         user.kids_guardian_phone = "13564137188";
@@ -71,7 +71,7 @@
         user.kids_emergency_phone = "13564137189";
 
         // package
-        user.pakcage_get_way = "顺丰到付";
+        user.pakcage_get_way = "顺丰到付";//("顺丰到付"), "现场领取")
         user.pakcage_get_name = "成人参赛者姓名";
         user.pakcage_get_phone = "13564137185";
         user.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
@@ -88,6 +88,7 @@
         //        user.race_time = "";
 
         $.post('http://molirun.api.createcdigital.com/user/add', user, function(data){
+            console.log("=========接口:新增参赛信息(自动更新库存)");
             console.log(data.rs);
         }, "JSON");
 
@@ -95,16 +96,20 @@
 
 
         // 接口:查询参赛信息
-        var card_number = "280682199101090023";
+        var card_number = "280682199101090023"; // 如果是家庭跑，输入家庭中任意一个人的证件号码均可
         $.getJSON('http://molirun.api.createcdigital.com/user/id/' + card_number, function(data){
-            console.log(data[0]);
+                console.log("=========接口:查询参赛信息");
+                if(data.length > 0)
+                    console.log(data[0]);
         });
 
 
 
         // 接口:查询库存信息
         $.getJSON('http://molirun.api.createcdigital.com/stock/get', function(data){
-            console.log(data[0]);
+            console.log("=========接口:查询库存信息");
+            if(data.length > 0)
+                console.log(data[0]);
         });
         &lt;/script&gt;
     </code>
@@ -135,7 +140,7 @@
         user.subscribe_time = "";
 
         // form
-        user.grouptype = "2"; // ("5km", "10km", "family)
+        user.grouptype = "2"; // ("5km", "10km", "family")
         user.p1_tag = "#极限运动";
 
         // p1
@@ -145,7 +150,7 @@
         user.p1_teesize = "L(175/92A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
 
         user.p1_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
-        user.p1_card_number = "280682199101090015";
+        user.p1_card_number = "280682199101090008";
         user.p1_phone = "13564137185";
 
         user.p1_emergency_name = "紧急联系人";
@@ -153,12 +158,12 @@
 
         // p2
         user.p2_name = "成人参赛者2姓名";
-        user.p2_sex = "女";
+        user.p2_sex = "女"; //("男", "女")
         user.p2_birthday = "1991-01-11";
-        user.p2_teesize = "L(175/92A)";
+        user.p2_teesize = "L(175/92A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
 
-        user.p2_card_type = "身份证";
-        user.p2_card_number = "280682199101090022";
+        user.p2_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
+        user.p2_card_number = "280682199101090007";
         user.p2_phone = "13816954340";
 
         user.p2_emergency_name = "紧急联系人";
@@ -166,12 +171,12 @@
 
         // kids
         user.kids_name = "未成年参赛者姓名";
-        user.kids_sex = "女";
+        user.kids_sex = "女"; //("男", "女")
         user.kids_birthday = "2000-01-11";
-        user.kids_teesize = "110以下";
+        user.kids_teesize = "110以下"; //("110以下"), "110-130")
 
-        user.kids_card_type = "身份证";
-        user.kids_card_number = "280682199101090023";
+        user.kids_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
+        user.kids_card_number = "280682199101090009";
         user.kids_guardian_name = "法定监护人姓名";
         user.kids_guardian_phone = "13564137188";
 
@@ -179,7 +184,7 @@
         user.kids_emergency_phone = "13564137189";
 
         // package
-        user.pakcage_get_way = "顺丰到付";
+        user.pakcage_get_way = "顺丰到付";//("顺丰到付"), "现场领取")
         user.pakcage_get_name = "成人参赛者姓名";
         user.pakcage_get_phone = "13564137185";
         user.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
@@ -196,6 +201,7 @@
 //        user.race_time = "";
 
         $.post('/user/add', user, function(data){
+            console.log("=========接口:新增参赛信息(自动更新库存)");
             console.log(data.rs);
         }, "JSON");
 
@@ -203,16 +209,20 @@
 
 
         // 接口:查询参赛信息
-        var card_number = "280682199101090023";
+        var card_number = "280682199101090009"; // 如果是家庭跑，输入家庭中任意一个人的证件号码均可
         $.getJSON('/user/id/' + card_number, function(data){
-            console.log(data[0]);
+            console.log("=========接口:查询参赛信息");
+            if(data.length > 0)
+                console.log(data[0]);
         });
 
 
 
         // 接口:查询库存信息
         $.getJSON('/stock/get', function(data){
-            console.log(data[0]);
+            console.log("=========接口:查询库存信息");
+            if(data.length > 0)
+                console.log(data[0]);
         });
     });
 </script>
