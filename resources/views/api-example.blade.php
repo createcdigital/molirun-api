@@ -27,7 +27,7 @@
         user.subscribe_time = "";
 
         // form
-        user.grouptype = "2"; // ("5km", "10km", "family")
+        user.grouptype = "family"; // ("5km", "10km", "family")
         user.p1_tag = "#极限运动";
 
         // p1
@@ -140,7 +140,7 @@
         user.subscribe_time = "";
 
         // form
-        user.grouptype = "2"; // ("5km", "10km", "family")
+        user.grouptype = "5km"; // ("5km", "10km", "family")
         user.p1_tag = "#极限运动";
 
         // p1
@@ -150,7 +150,7 @@
         user.p1_teesize = "L(175/92A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
 
         user.p1_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
-        user.p1_card_number = "2806821991010900020";
+        user.p1_card_number = "2806821991010900024";
         user.p1_phone = "13564137185";
 
         user.p1_emergency_name = "紧急联系人";
@@ -163,7 +163,7 @@
         user.p2_teesize = "L(175/92A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
 
         user.p2_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
-        user.p2_card_number = "";
+        user.p2_card_number = "2806821991010900025";
         user.p2_phone = "13816954340";
 
         user.p2_emergency_name = "紧急联系人";
@@ -176,7 +176,7 @@
         user.kids_teesize = "110以下"; //("110以下"), "110-130")
 
         user.kids_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
-        user.kids_card_number = "";
+        user.kids_card_number = "2806821991010900026";
         user.kids_guardian_name = "法定监护人姓名";
         user.kids_guardian_phone = "13564137188";
 
