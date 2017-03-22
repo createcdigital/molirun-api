@@ -27,7 +27,7 @@
         user.subscribe_time = "";
 
         // form
-        user.grouptype = "family"; // ("5km", "10km", "family")
+        user.grouptype = "家庭跑"; // ("5km", "10km", "家庭跑")
         user.p1_tag = "#极限运动";
 
         // p1
@@ -144,7 +144,7 @@
         user.subscribe_time = "";
 
         // form
-        user.grouptype = "5km"; // ("5km", "10km", "family")
+        user.grouptype = "家庭跑"; // ("5km", "10km", "family")
         user.p1_tag = "#极限运动";
 
         // p1
