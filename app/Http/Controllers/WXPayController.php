@@ -26,17 +26,16 @@ class WXPayController extends Controller
         if($return_code == "SUCCESS")
         {
             $result_code = $request->result_code;
-            $err_code = $request->err_code.$request->err_code_des;
             $transaction_id = $request->transaction_id;
             $out_trade_no = $request->out_trade_no;
             $openid = $request->openid;
             $time_end = $request->time_end;
             $attach = $request->attach;
 
-            Log::info("===notify, transaction_id:".$transaction_id.", out_trade_no:" .$out_trade_no.", result_code:".$result_code.", error_code:".$err_code.", openid:".$openid.", time_end:".$time_end.", attach:".$attach);
+            Log::info("===notify, transaction_id:".$transaction_id.", out_trade_no:" .$out_trade_no.", result_code:".$result_code.", result_code:".$result_code.", openid:".$openid.", time_end:".$time_end.", attach:".$attach);
 
             $models = Racer::where('out_trade_no', $out_trade_no)->first();
-            if($models -> transaction_id == "" && $models -> pay_status == "" && $models -> transaction_date  == "")
+            if(isset($models) && $models -> transaction_id == "" && $models -> pay_status == "" && $models -> transaction_date  == "")
             {
                 $models -> pay_status = "已支付";
                 $models -> transaction_id = $transaction_id;

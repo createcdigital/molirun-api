@@ -16,7 +16,7 @@ $app->get('user/id/{card_number}', 'RacerController@getByCardNumber');
 
 $app->get('stock/get', 'StockController@get');
 
-$app->post('wxpay/callback', 'WXPayController@notify');
+$app->get('wxpay/callback', 'WXPayController@notify');
 
 $app->get('/', function(){
     return view('api-example');
