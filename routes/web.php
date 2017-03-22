@@ -11,12 +11,16 @@
 |
 */
 
-$app->post('user/add', 'UserController@add');
-$app->get('user/id/{card_number}', 'UserController@getByCardNumber');
+$app->post('user/add', 'RacerController@add');
+$app->get('user/id/{card_number}', 'RacerController@getByCardNumber');
 
 $app->get('stock/get', 'StockController@get');
 
+$app->post('wxpay/callback', 'WXPayController@notify');
 
+$app->get('/', function(){
+    return view('api-example');
+});
 $app->get('api/example', function(){
     return view('api-example');
 });

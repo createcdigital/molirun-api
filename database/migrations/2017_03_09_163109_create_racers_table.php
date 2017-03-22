@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateRacersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('racers', function (Blueprint $table) {
             $table->increments('id');
 
             //wechat information
@@ -76,6 +76,7 @@ class CreateUsersTable extends Migration
             $table->string('pakcage_get_address')->default('');
 
             // payment
+            $table->string('out_trade_no')->unique();
             $table->string('pay_status')->default('');
             $table->string('transaction_id')->default('');
             $table->string('transaction_date')->default('');
@@ -97,6 +98,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('racers');
     }
 }

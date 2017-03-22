@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stock;
-use App\Models\User;
+use App\Models\Racer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class UserController extends Controller
+class RacerController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,7 +25,7 @@ class UserController extends Controller
         $isRepeatData = $this->checkRepeatCardNumber($request);
 
         if(!isset($isRepeatData)) {
-            $model = new User;
+            $model = new Racer;
 
             //wechat information
             $model->openid = $request->openid;
@@ -87,7 +87,8 @@ class UserController extends Controller
             $model->pakcage_get_phone = $request->pakcage_get_phone;
             $model->pakcage_get_address = $request->pakcage_get_address;
 
-//            // payment
+            // payment
+            $model->out_trade_no = $request->out_trade_no;
 //            $model->pay_status = $request->pay_status;
 //            $model->transaction_id = $request->transaction_id;
 //            $model->transaction_date = $request->transaction_date;
@@ -120,7 +121,7 @@ class UserController extends Controller
             && $p1_card_number != $kids_card_number
             && $p2_card_number != $kids_card_number)
         {
-            $models = User::where('p1_card_number', $p1_card_number)
+            $models = Racer::where('p1_card_number', $p1_card_number)
                             ->orWhere('p2_card_number', $p2_card_number)
                             ->orWhere('kids_card_number', $kids_card_number)
                             ->get();
@@ -174,7 +175,7 @@ class UserController extends Controller
 
     public function getByCardNumber($card_number)
     {
-        $model = User::where('p1_card_type', $card_number)
+        $model = Racer::where('p1_card_type', $card_number)
             ->orWhere('p2_card_number', $card_number)
             ->orWhere('kids_card_number', $card_number)
             ->get();
