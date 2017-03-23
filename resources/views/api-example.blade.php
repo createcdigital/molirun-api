@@ -15,7 +15,89 @@
 <pre>
     <code class="js">
         &lt;script&gt;
-        // 接口:新增参赛信息(接收到微信成功付款后自动更新库存)
+        // 接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(5km)
+        var fivekm_user = {};
+        fivekm_user.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
+        fivekm_user.nickname = "coton_chen";
+        fivekm_user.headimgurl = "http://wx.qlogo.cn/mmopen/ajNVdqHZLLAl8Csrib0RvAPsK0YwMOouWuDShovxNhP70BJVTzed0CQsUicYxHwgjbfiaoqTtScPwZVXqr1KEWn1A/0";
+        fivekm_user.sex = "1";
+        fivekm_user.city = "静安";
+        fivekm_user.country = "中国";
+        fivekm_user.province = "上海";
+        fivekm_user.subscribe_time = "";
+
+        // form
+        fivekm_user.grouptype = "5km"; // ("5km", "10km", "family")
+        fivekm_user.p1_tag = "#极限运动";
+
+        // p1
+        fivekm_user.p1_name = "中文姓名";
+        fivekm_user.p1_sex = "男"; //("男", "女")
+        fivekm_user.p1_birthday = "1991-01-09";
+        fivekm_user.p1_teesize = "M(170/88A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
+
+        fivekm_user.p1_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
+        fivekm_user.p1_card_number = "2806821991010900044";
+        fivekm_user.p1_phone = "13564137185";
+
+        fivekm_user.p1_emergency_name = "紧急联系人";
+        fivekm_user.p1_emergency_phone = "13564137186";
+
+        // p2
+        fivekm_user.p2_name = "";
+        fivekm_user.p2_sex = ""; //("男", "女")
+        fivekm_user.p2_birthday = "";
+        fivekm_user.p2_teesize = ""; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
+
+        fivekm_user.p2_card_type = ""; // ("身份证", "护照", "港澳通行证", "台胞证")
+        fivekm_user.p2_card_number = "";
+        fivekm_user.p2_phone = "";
+
+        fivekm_user.p2_emergency_name = "";
+        fivekm_user.p2_emergency_phone = "";
+
+        // kids
+        fivekm_user.kids_name = "";
+        fivekm_user.kids_sex = ""; //("男", "女")
+        fivekm_user.kids_birthday = "";
+        fivekm_user.kids_teesize = ""; //("110以下"), "110-130")
+
+        fivekm_user.kids_card_type = ""; // ("身份证", "护照", "港澳通行证", "台胞证")
+        fivekm_user.kids_card_number = "";
+        fivekm_user.kids_guardian_name = "";
+        fivekm_user.kids_guardian_phone = "";
+
+        fivekm_user.kids_emergency_name = "";
+        fivekm_user.kids_emergency_phone = "";
+
+        // package
+        fivekm_user.pakcage_get_way = "顺丰到付";//("顺丰到付"), "现场领取")
+        fivekm_user.pakcage_get_name = "成人参赛者姓名";
+        fivekm_user.pakcage_get_phone = "13564137185";
+        fivekm_user.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
+
+        // payment
+        fivekm_user.out_trade_no = md5(fivekm_user.p1_card_number + fivekm_user.p2_card_number + fivekm_user.kids_card_number); // md5(fivekm_user.p1_card_number + fivekm_user.p2_card_number + fivekm_user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
+        //        fivekm_user.pay_status = "";
+        //        fivekm_user.transaction_id = "";
+        //        fivekm_user.transaction_date = "";
+        //
+        //        // race result
+        //        fivekm_user.p1_race_number = "";
+        //        fivekm_user.p2_race_number = "";
+        //        fivekm_user.kids_race_number = "";
+        //        fivekm_user.race_time = "";
+
+        // action
+        fivekm_user.action = "add"; // ("add", "update")
+
+        $.post('/user/add', fivekm_user, function(data){
+        var data = typeof data == "object" ? data : JSON.parse(data);
+        console.log("=========接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(5km)");
+        console.log(data.rs);
+        });
+
+        // 接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(家庭跑)
         var user = {};
         user.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
         user.nickname = "coton_chen";
@@ -27,7 +109,7 @@
         user.subscribe_time = "";
 
         // form
-        user.grouptype = "家庭跑"; // ("5km", "10km", "家庭跑")
+        user.grouptype = "家庭跑"; // ("5km", "10km", "family")
         user.p1_tag = "#极限运动";
 
         // p1
@@ -37,7 +119,7 @@
         user.p1_teesize = "L(175/92A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
 
         user.p1_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
-        user.p1_card_number = "280682199101090015";
+        user.p1_card_number = "2806821991010900024";
         user.p1_phone = "13564137185";
 
         user.p1_emergency_name = "紧急联系人";
@@ -50,7 +132,7 @@
         user.p2_teesize = "L(175/92A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
 
         user.p2_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
-        user.p2_card_number = "280682199101090022";
+        user.p2_card_number = "2806821991010900025";
         user.p2_phone = "13816954340";
 
         user.p2_emergency_name = "紧急联系人";
@@ -63,7 +145,7 @@
         user.kids_teesize = "110以下"; //("110以下"), "110-130")
 
         user.kids_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
-        user.kids_card_number = "280682199101090023";
+        user.kids_card_number = "2806821991010900026";
         user.kids_guardian_name = "法定监护人姓名";
         user.kids_guardian_phone = "13564137188";
 
@@ -77,7 +159,7 @@
         user.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
 
         // payment
-        user.out_trade_no = md5("280682199101090015" + "280682199101090022" + "280682199101090023"); // md5(user.p1_card_number + user.p2_card_number + user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
+        user.out_trade_no = md5(user.p1_card_number + user.p2_card_number + user.kids_card_number); // md5(user.p1_card_number + user.p2_card_number + user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
         //        user.pay_status = "";
         //        user.transaction_id = "";
         //        user.transaction_date = "";
@@ -91,30 +173,140 @@
         // action
         user.action = "add"; // ("add", "update")
 
-        $.post('http://molirun.api.createcdigital.com/user/add', user, function(data){
-            console.log("=========接口:新增参赛信息(自动更新库存)");
-            console.log(data.rs);
+        $.post('/user/add', user, function(data){
+        var data = typeof data == "object" ? data : JSON.parse(data);
+        console.log("=========接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(家庭跑)");
+        console.log(data.rs);
         }, "JSON");
 
 
+        // 接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作
+        var update_user = {};
+        update_user.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
+        update_user.nickname = "coton_chen";
+        update_user.headimgurl = "http://wx.qlogo.cn/mmopen/ajNVdqHZLLAl8Csrib0RvAPsK0YwMOouWuDShovxNhP70BJVTzed0CQsUicYxHwgjbfiaoqTtScPwZVXqr1KEWn1A/0";
+        update_user.sex = "1";
+        update_user.city = "静安";
+        update_user.country = "中国";
+        update_user.province = "上海";
+        update_user.subscribe_time = "";
+
+        // form
+        update_user.grouptype = "5km"; // ("5km", "10km", "family")
+        update_user.p1_tag = "#极限运动";
+
+        // p1
+        update_user.p1_name = "更新的名字2";
+        update_user.p1_sex = "男"; //("男", "女")
+        update_user.p1_birthday = "1991-01-09";
+        update_user.p1_teesize = "M(170/88A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
+
+        update_user.p1_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
+        update_user.p1_card_number = "2806821991010900044";
+        update_user.p1_phone = "13564137185";
+
+        update_user.p1_emergency_name = "紧急联系人";
+        update_user.p1_emergency_phone = "13564137186";
+
+        // p2
+        update_user.p2_name = "";
+        update_user.p2_sex = ""; //("男", "女")
+        update_user.p2_birthday = "";
+        update_user.p2_teesize = ""; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
+
+        update_user.p2_card_type = ""; // ("身份证", "护照", "港澳通行证", "台胞证")
+        update_user.p2_card_number = "";
+        update_user.p2_phone = "";
+
+        update_user.p2_emergency_name = "";
+        update_user.p2_emergency_phone = "";
+
+        // kids
+        update_user.kids_name = "";
+        update_user.kids_sex = ""; //("男", "女")
+        update_user.kids_birthday = "";
+        update_user.kids_teesize = ""; //("110以下"), "110-130")
+
+        update_user.kids_card_type = ""; // ("身份证", "护照", "港澳通行证", "台胞证")
+        update_user.kids_card_number = "";
+        update_user.kids_guardian_name = "";
+        update_user.kids_guardian_phone = "";
+
+        update_user.kids_emergency_name = "";
+        update_user.kids_emergency_phone = "";
+
+        // package
+        update_user.pakcage_get_way = "顺丰到付";//("顺丰到付"), "现场领取")
+        update_user.pakcage_get_name = "成人参赛者姓名";
+        update_user.pakcage_get_phone = "13564137185";
+        update_user.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
+
+        // payment
+        update_user.out_trade_no = md5(update_user.p1_card_number + update_user.p2_card_number + update_user.kids_card_number); // md5(update_user.p1_card_number + update_user.p2_card_number + update_user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
+        //        update_user.pay_status = "";
+        //        update_user.transaction_id = "";
+        //        update_user.transaction_date = "";
+        //
+        //        // race result
+        //        update_user.p1_race_number = "";
+        //        update_user.p2_race_number = "";
+        //        update_user.kids_race_number = "";
+        //        update_user.race_time = "";
+
+        // action
+        update_user.action = "update"; // ("add", "update")
+
+        $.post('/user/add', update_user, function(data){
+        var data = typeof data == "object" ? data : JSON.parse(data);
+        console.log("=========接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作");
+        console.log(data.rs);
+        });
 
 
         // 接口:查询参赛信息
-        var card_number = "280682199101090023"; // 如果是家庭跑，输入家庭中任意一个人的证件号码均可
-        $.getJSON('http://molirun.api.createcdigital.com/user/id/' + card_number, function(data){
-                console.log("=========接口:查询参赛信息");
-                if(data.length > 0)
-                    console.log(data[0]);
+        var card_number = "2806821991010900024"; // 如果是家庭跑，输入家庭中任意一个人的证件号码均可
+        $.getJSON('/user/id/' + card_number, function(data){
+        var data = typeof data == "object" ? data : JSON.parse(data);
+        console.log("=========接口:查询参赛信息");
+        if(data.length > 0)
+        console.log(data[0]);
         });
 
 
 
         // 接口:查询库存信息
-        $.getJSON('http://molirun.api.createcdigital.com/stock/get', function(data){
-            console.log("=========接口:查询库存信息");
-            if(data.length > 0)
-                console.log(data[0]);
+        $.getJSON('/stock/get', function(data){
+        var data = typeof data == "object" ? data : JSON.parse(data);
+        console.log("=========接口:查询库存信息");
+        if(data.length > 0)
+        console.log(data[0]);
         });
+
+        // 支付回调接口
+        var notify = {"appid":"wxc6d26827fed8ccc6",
+        "attach":"100\u5143\u4e00\u822c\u8dd1",
+        "bank_type":"CFT",
+        "cash_fee":"1",
+        "device_info":"WEB",
+        "fee_type":"CNY",
+        "is_subscribe":"Y",
+        "mch_id":"1315072801",
+        "nonce_str":"nhm4039bbl1tye3ph24qe5o9p2d3yboj",
+        "openid":"onlckwtzdvnbeVhpTDJ7C-J103bc",
+        "out_trade_no":"5d8e051a08816761979999b12a48b030",
+        "result_code":"SUCCESS",
+        "return_code":"SUCCESS",
+        "sign":"CE223801CEEB186A43C76FEE613B464A",
+        "time_end":"20170322193126",
+        "total_fee":"1",
+        "trade_type":"JSAPI",
+        "transaction_id":"4008672001201703224280767558"
+        };
+        $.post('/wxpay/callback', notify, function(data){
+        var data = typeof data == "object" ? data : JSON.parse(data);
+        console.log("=========接口:支付回调接口");
+        console.log(data.rs);
+        }, "JSON");
         &lt;/script&gt;
     </code>
 </pre>
@@ -423,6 +615,7 @@
                         "transaction_id":"4008672001201703224280767558"
                     };
         $.post('/wxpay/callback', notify, function(data){
+            var data = typeof data == "object" ? data : JSON.parse(data);
             console.log("=========接口:支付回调接口");
             console.log(data.rs);
         }, "JSON");
