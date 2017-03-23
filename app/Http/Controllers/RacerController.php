@@ -22,74 +22,109 @@ class RacerController extends Controller
 
     public function add(Request $request)
     {
+        if($request->action == "add")
+        {
+            return $this->addRacer($request);
+        }else if($request->action == "update" && $request->grouptype != "家庭跑")
+        {
+            return $this->updateRacer($request);
+        }else if($request->action == "update" && $request->grouptype == "家庭跑")
+        {
+            return json_encode(["rs" => "fail, to do develop"]);
+        }else
+            return json_encode(["rs" => "fail, incorrect action"]);
+    }
+
+    private function addRacer($request)
+    {
         $isRepeatData = $this->checkRepeatCardNumber($request);
 
-        if(!isset($isRepeatData)) {
-            $model = new Racer;
+        if (!isset($isRepeatData)) {
+            return $this->saveRacer(new Racer, $request);
+        } else
+            return json_encode(["rs" => $isRepeatData]);
+    }
 
-            //wechat information
-            $model->openid = $request->openid;
-            $model->nickname = $request->nickname;
-            $model->headimgurl = $request->headimgurl;
-            $model->sex = $request->sex;
-            $model->city = $request->city;
-            $model->country = $request->country;
-            $model->province = $request->province;
-            $model->subscribe_time = $request->subscribe_time;
+    private function updateRacer($request)
+    {
+        $model = Racer::where('p1_card_number', $request->p1_card_number)->first();
 
-            // form
-            $model->grouptype = $request->grouptype; // 0:5km, 1:10km, 2:family
-            $model->p1_tag = $request->p1_tag;
+        if($model != null && isset($model))
+        {
+            if($model->pay_status == "未支付")
+                return $this->saveRacer($model, $request);
+            else
+                return json_encode(["rs" => "fail, can't to change racer information when pay status is \"已支付\"."]);
+        }
+        else
+            return $this->addRacer($request);
+    }
 
-            // p1
-            $model->p1_name = $request->p1_name;
-            $model->p1_sex = $request->p1_sex;
-            $model->p1_birthday = $request->p1_birthday;
-            $model->p1_teesize = $request->p1_teesize;
+    private function saveRacer($model, $request)
+    {
+        //wechat information
+        $model->openid = $request->openid;
+        $model->nickname = $request->nickname;
+        $model->headimgurl = $request->headimgurl;
+        $model->sex = $request->sex;
+        $model->city = $request->city;
+        $model->country = $request->country;
+        $model->province = $request->province;
+        $model->subscribe_time = $request->subscribe_time;
 
-            $model->p1_card_type = $request->p1_card_type;
-            $model->p1_card_number = $request->p1_card_number;
-            $model->p1_phone = $request->p1_phone;
+        // form
+        $model->grouptype = $request->grouptype; // 0:5km, 1:10km, 2:家庭跑
+        $model->p1_tag = $request->p1_tag;
 
-            $model->p1_emergency_name = $request->p1_emergency_name;
-            $model->p1_emergency_phone = $request->p1_emergency_phone;
+        // p1
+        $model->p1_name = $request->p1_name;
+        $model->p1_sex = $request->p1_sex;
+        $model->p1_birthday = $request->p1_birthday;
+        $model->p1_teesize = $request->p1_teesize;
 
-            // p2
-            $model->p2_name = $request->p2_name;
-            $model->p2_sex = $request->p2_sex;
-            $model->p2_birthday = $request->p2_birthday;
-            $model->p2_teesize = $request->p2_teesize;
+        $model->p1_card_type = $request->p1_card_type;
+        $model->p1_card_number = $request->p1_card_number;
+        $model->p1_phone = $request->p1_phone;
 
-            $model->p2_card_type = $request->p2_card_type;
-            $model->p2_card_number = $request->p2_card_number;
-            $model->p2_phone = $request->p2_phone;
+        $model->p1_emergency_name = $request->p1_emergency_name;
+        $model->p1_emergency_phone = $request->p1_emergency_phone;
 
-            $model->p2_emergency_name = $request->p2_emergency_name;
-            $model->p2_emergency_phone = $request->p2_emergency_phone;
+        // p2
+        $model->p2_name = $request->p2_name;
+        $model->p2_sex = $request->p2_sex;
+        $model->p2_birthday = $request->p2_birthday;
+        $model->p2_teesize = $request->p2_teesize;
 
-            // kids
-            $model->kids_name = $request->kids_name;
-            $model->kids_sex = $request->kids_sex;
-            $model->kids_birthday = $request->kids_birthday;
-            $model->kids_teesize = $request->kids_teesize;
+        $model->p2_card_type = $request->p2_card_type;
+        $model->p2_card_number = $request->p2_card_number;
+        $model->p2_phone = $request->p2_phone;
 
-            $model->kids_card_type = $request->kids_card_type;
-            $model->kids_card_number = $request->kids_card_number;
-            $model->kids_guardian_name = $request->kids_guardian_name;
-            $model->kids_guardian_phone = $request->kids_guardian_phone;
+        $model->p2_emergency_name = $request->p2_emergency_name;
+        $model->p2_emergency_phone = $request->p2_emergency_phone;
 
-            $model->kids_emergency_name = $request->kids_emergency_name;
-            $model->kids_emergency_phone = $request->kids_emergency_phone;
+        // kids
+        $model->kids_name = $request->kids_name;
+        $model->kids_sex = $request->kids_sex;
+        $model->kids_birthday = $request->kids_birthday;
+        $model->kids_teesize = $request->kids_teesize;
 
-            // package
-            $model->pakcage_get_way = $request->pakcage_get_way;
-            $model->pakcage_get_name = $request->pakcage_get_name;
-            $model->pakcage_get_phone = $request->pakcage_get_phone;
-            $model->pakcage_get_address = $request->pakcage_get_address;
+        $model->kids_card_type = $request->kids_card_type;
+        $model->kids_card_number = $request->kids_card_number;
+        $model->kids_guardian_name = $request->kids_guardian_name;
+        $model->kids_guardian_phone = $request->kids_guardian_phone;
 
-            // payment
-            $model->out_trade_no = $request->out_trade_no;
-//            $model->pay_status = $request->pay_status;
+        $model->kids_emergency_name = $request->kids_emergency_name;
+        $model->kids_emergency_phone = $request->kids_emergency_phone;
+
+        // package
+        $model->pakcage_get_way = $request->pakcage_get_way;
+        $model->pakcage_get_name = $request->pakcage_get_name;
+        $model->pakcage_get_phone = $request->pakcage_get_phone;
+        $model->pakcage_get_address = $request->pakcage_get_address;
+
+        // payment
+        $model->out_trade_no = $request->out_trade_no;
+        $model->pay_status = "未支付";
 //            $model->transaction_id = $request->transaction_id;
 //            $model->transaction_date = $request->transaction_date;
 //
@@ -100,15 +135,10 @@ class RacerController extends Controller
 //            $model->race_time = $request->race_time;
 
 
-            if ($model->save())
-            {
-                $this->updateStock($request);
-                return json_encode(["rs" => "success"]);
-            }
-            else
-                return json_encode(["rs" => "fail"]);
-        }else
-            return json_encode(["rs" => $isRepeatData]);
+        if ($model->save())
+            return json_encode(["rs" => "success"]);
+        else
+            return json_encode(["rs" => "fail"]);
     }
 
     protected function checkRepeatCardNumber(Request $request)
@@ -175,7 +205,7 @@ class RacerController extends Controller
 
     public function getByCardNumber($card_number)
     {
-        $model = Racer::where('p1_card_type', $card_number)
+        $model = Racer::orWhere('p1_card_number', $card_number)
             ->orWhere('p2_card_number', $card_number)
             ->orWhere('kids_card_number', $card_number)
             ->get();

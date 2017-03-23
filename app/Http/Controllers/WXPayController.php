@@ -35,7 +35,7 @@ class WXPayController extends Controller
             Log::info("===notify, transaction_id:".$transaction_id.", out_trade_no:" .$out_trade_no.", result_code:".$result_code.", result_code:".$result_code.", openid:".$openid.", time_end:".$time_end.", attach:".$attach);
 
             $models = Racer::where('out_trade_no', $out_trade_no)->first();
-            if(isset($models) && $models -> transaction_id == "" && $models -> pay_status == "" && $models -> transaction_date  == "")
+            if(isset($models) && $models -> transaction_id == "" && $models -> pay_status == "未支付" && $models -> transaction_date  == "")
             {
                 $models -> pay_status = "已支付";
                 $models -> transaction_id = $transaction_id;
