@@ -17,7 +17,7 @@ class CreateStocksTable extends Migration
             $table->increments('id');
 
             //group type
-            $table->integer('group_type_single')->default(3850);
+            $table->integer('group_type_single')->default(4000);
             $table->integer('group_type_family')->default(150);
 
             //
@@ -49,7 +49,7 @@ class CreateStocksTable extends Migration
     private function init()
     {
         DB::table('stocks')->insert(array(
-            "group_type_single" => 3850,
+            "group_type_single" => 4000,
             "group_type_family" => 150,
 
             "p_xs" => 300,
