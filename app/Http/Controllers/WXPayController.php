@@ -33,7 +33,7 @@ class WXPayController extends Controller
             $time_end = $request->time_end;
             $attach = $request->attach;
 
-            Log::info("===notify, start  transaction_id:".$transaction_id.", out_trade_no:" .$out_trade_no.", result_code:".$result_code.", result_code:".$result_code.", openid:".$openid.", time_end:".$time_end.", attach:".$attach);
+            Log::info("===notify, start ===transaction_id:".$transaction_id.", out_trade_no:" .$out_trade_no.", result_code:".$result_code.", result_code:".$result_code.", openid:".$openid.", time_end:".$time_end.", attach:".$attach);
 
             $model = Racer::where('out_trade_no', $out_trade_no)->first();
             if(isset($model) && $model -> transaction_id == "" && $model -> pay_status == "未支付" && $model -> transaction_date  == "")
@@ -45,18 +45,18 @@ class WXPayController extends Controller
                 {
                     $this->updateStock($model);
 
-                    Log::info("===notify, end out_trade_no:" .$out_trade_no.", 更新支付状态成功!");
+                    Log::info("===notify, end   ===transaction_id:".$transaction_id.", out_trade_no:" .$out_trade_no.", 更新支付状态成功!");
 
                     return json_encode(["rs" => "success"]);
                 }
                 else
                 {
-                    Log::info("===notify, end out_trade_no:" .$out_trade_no.", 更新支付状态失败!");
+                    Log::info("===notify, end   ===transaction_id:".$transaction_id.", out_trade_no:" .$out_trade_no.", 更新支付状态失败!");
                     return json_encode(["rs" => "fail"]);
                 }
             }else
             {
-                Log::info("===notify, end out_trade_no:" .$out_trade_no.", 更新支付状态失败! 状态已被更新");
+                Log::info("===notify, end   ===transaction_id:".$transaction_id.", out_trade_no:" .$out_trade_no.", 更新支付状态失败! 状态已被更新");
                 return json_encode(["rs" => "already updated payment status."]);
             }
         }
