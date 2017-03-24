@@ -25,12 +25,9 @@ class RacerController extends Controller
         if($request->action == "add")
         {
             return $this->addRacer($request);
-        }else if($request->action == "update" && $request->grouptype != "家庭跑")
+        }else if($request->action == "update")
         {
             return $this->updateRacer($request);
-        }else if($request->action == "update" && $request->grouptype == "家庭跑")
-        {
-            return json_encode(["rs" => "fail, to do develop"]);
         }else
             return json_encode(["rs" => "fail, incorrect action"]);
     }
@@ -163,16 +160,16 @@ class RacerController extends Controller
                 foreach ($models as $model)
                 {
                     if($model->p1_card_number == $p1_card_number && strrpos($message, $p1_card_number) == false)
-                        $message .= "成年参赛者(证件号码: ".$p1_card_number."), 已存在相同证件号码的参赛者!";
+                        $message .= "证件号码: ".$p1_card_number." 已报名, " + $model->pay_status;
 
                     if($model->p2_card_number == $p2_card_number && strrpos($message, $p2_card_number) == false)
                     {
-                        $message .= ($message == "" ? "": ", ")."成年参赛者2(证件号码: ".$p2_card_number."), 已存在相同证件号码的参赛者!";
+                        $message .= ($message == "" ? "": ", ")."证件号码: ".$p2_card_number." 已报名, " + $model->pay_status;;
                     }
 
                     if($model->kids_card_number == $kids_card_number && strrpos($message, $kids_card_number) == false)
                     {
-                        $message .= ($message == "" ? "": ", ")."未成年参赛者(证件号码: ".$kids_card_number."), 已存在相同证件号码的参赛者!";
+                        $message .= ($message == "" ? "": ", ")."证件号码: ".$kids_card_number." 已报名, " + $model->pay_status;;;
                     }
                 }
 
