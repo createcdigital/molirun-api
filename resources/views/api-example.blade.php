@@ -15,7 +15,7 @@
 <pre>
     <code class="js">
         &lt;script&gt;
-        // 接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(5km)
+        // ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(5km)
         var fivekm_user = {};
         fivekm_user.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
         fivekm_user.nickname = "coton_chen";
@@ -97,7 +97,11 @@
         console.log(data.rs);
         });
 
-        // 接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(家庭跑)
+
+
+
+
+        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(家庭跑)
         var user = {};
         user.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
         user.nickname = "coton_chen";
@@ -180,7 +184,11 @@
         }, "JSON");
 
 
-        // 接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作
+
+
+
+
+        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作
         var update_user = {};
         update_user.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
         update_user.nickname = "coton_chen";
@@ -263,7 +271,95 @@
         });
 
 
-        // 接口:查询参赛信息
+
+
+
+        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作(家庭跑)
+        var update_faimly = {};
+        update_faimly.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
+        update_faimly.nickname = "coton_chen";
+        update_faimly.headimgurl = "http://wx.qlogo.cn/mmopen/ajNVdqHZLLAl8Csrib0RvAPsK0YwMOouWuDShovxNhP70BJVTzed0CQsUicYxHwgjbfiaoqTtScPwZVXqr1KEWn1A/0";
+        update_faimly.sex = "1";
+        update_faimly.city = "静安";
+        update_faimly.country = "中国";
+        update_faimly.province = "上海";
+        update_faimly.subscribe_time = "";
+
+        // form
+        update_faimly.grouptype = "家庭跑"; // ("5km", "10km", "family")
+        update_faimly.p1_tag = "#极限运动";
+
+        // p1
+        update_faimly.p1_name = "成人更新姓名";
+        update_faimly.p1_sex = "男"; //("男", "女")
+        update_faimly.p1_birthday = "1991-01-09";
+        update_faimly.p1_teesize = "L(175/92A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
+
+        update_faimly.p1_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
+        update_faimly.p1_card_number = "2806821991010900024";
+        update_faimly.p1_phone = "13564137185";
+
+        update_faimly.p1_emergency_name = "紧急联系人";
+        update_faimly.p1_emergency_phone = "13564137186";
+
+        // p2
+        update_faimly.p2_name = "成人参赛者2更新姓名";
+        update_faimly.p2_sex = "女"; //("男", "女")
+        update_faimly.p2_birthday = "1991-01-11";
+        update_faimly.p2_teesize = "L(175/92A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
+
+        update_faimly.p2_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
+        update_faimly.p2_card_number = "2806821991010900025";
+        update_faimly.p2_phone = "13816954340";
+
+        update_faimly.p2_emergency_name = "紧急联系人";
+        update_faimly.p2_emergency_phone = "13564137187";
+
+        // kids
+        update_faimly.kids_name = "未成年参赛者更新姓名";
+        update_faimly.kids_sex = "女"; //("男", "女")
+        update_faimly.kids_birthday = "2000-01-11";
+        update_faimly.kids_teesize = "110以下"; //("110以下"), "110-130")
+
+        update_faimly.kids_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
+        update_faimly.kids_card_number = "2806821991010900026";
+        update_faimly.kids_guardian_name = "法定监护人姓名";
+        update_faimly.kids_guardian_phone = "13564137188";
+
+        update_faimly.kids_emergency_name = "紧急联系人";
+        update_faimly.kids_emergency_phone = "13564137189";
+
+        // package
+        update_faimly.pakcage_get_way = "顺丰到付";//("顺丰到付"), "现场领取")
+        update_faimly.pakcage_get_name = "成人参赛者姓名";
+        update_faimly.pakcage_get_phone = "13564137185";
+        update_faimly.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
+
+        // payment
+        update_faimly.out_trade_no = md5(update_faimly.p1_card_number + update_faimly.p2_card_number + update_faimly.kids_card_number); // md5(update_faimly.p1_card_number + update_faimly.p2_card_number + update_faimly.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
+        //        update_faimly.pay_status = "";
+        //        update_faimly.transaction_id = "";
+        //        update_faimly.transaction_date = "";
+        //
+        //        // race result
+        //        update_faimly.p1_race_number = "";
+        //        update_faimly.p2_race_number = "";
+        //        update_faimly.kids_race_number = "";
+        //        update_faimly.race_time = "";
+
+        // action
+        update_faimly.action = "update"; // ("update", "update")
+
+        $.post('/user/add', update_faimly, function(data){
+        var data = typeof data == "object" ? data : JSON.parse(data);
+        console.log("=========接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作(家庭跑)");
+        console.log(data.rs);
+        }, "JSON");
+
+
+
+
+        //  ===============================接口:查询参赛信息
         var card_number = "2806821991010900024"; // 如果是家庭跑，输入家庭中任意一个人的证件号码均可
         $.getJSON('/user/id/' + card_number, function(data){
         var data = typeof data == "object" ? data : JSON.parse(data);
@@ -274,7 +370,9 @@
 
 
 
-        // 接口:查询库存信息
+
+
+        //  ===============================接口:查询库存信息
         $.getJSON('/stock/get', function(data){
         var data = typeof data == "object" ? data : JSON.parse(data);
         console.log("=========接口:查询库存信息");
@@ -282,7 +380,13 @@
         console.log(data[0]);
         });
 
-        // 支付回调接口
+
+
+
+
+
+
+        //  ===============================支付回调接口
         var notify = {"appid":"wxc6d26827fed8ccc6",
         "attach":"100\u5143\u4e00\u822c\u8dd1",
         "bank_type":"CFT",
@@ -327,7 +431,7 @@
             hljs.highlightBlock(block);
         });
 
-        // 接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(5km)
+        // ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(5km)
         var fivekm_user = {};
         fivekm_user.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
         fivekm_user.nickname = "coton_chen";
@@ -409,7 +513,11 @@
             console.log(data.rs);
         });
 
-        // 接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(家庭跑)
+
+
+
+
+        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(家庭跑)
         var user = {};
         user.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
         user.nickname = "coton_chen";
@@ -492,7 +600,11 @@
         }, "JSON");
 
 
-        // 接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作
+
+
+
+
+        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作
         var update_user = {};
         update_user.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
         update_user.nickname = "coton_chen";
@@ -575,7 +687,95 @@
         });
 
 
-        // 接口:查询参赛信息
+
+
+
+        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作(家庭跑)
+        var update_faimly = {};
+        update_faimly.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
+        update_faimly.nickname = "coton_chen";
+        update_faimly.headimgurl = "http://wx.qlogo.cn/mmopen/ajNVdqHZLLAl8Csrib0RvAPsK0YwMOouWuDShovxNhP70BJVTzed0CQsUicYxHwgjbfiaoqTtScPwZVXqr1KEWn1A/0";
+        update_faimly.sex = "1";
+        update_faimly.city = "静安";
+        update_faimly.country = "中国";
+        update_faimly.province = "上海";
+        update_faimly.subscribe_time = "";
+
+        // form
+        update_faimly.grouptype = "家庭跑"; // ("5km", "10km", "family")
+        update_faimly.p1_tag = "#极限运动";
+
+        // p1
+        update_faimly.p1_name = "成人更新姓名";
+        update_faimly.p1_sex = "男"; //("男", "女")
+        update_faimly.p1_birthday = "1991-01-09";
+        update_faimly.p1_teesize = "L(175/92A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
+
+        update_faimly.p1_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
+        update_faimly.p1_card_number = "2806821991010900024";
+        update_faimly.p1_phone = "13564137185";
+
+        update_faimly.p1_emergency_name = "紧急联系人";
+        update_faimly.p1_emergency_phone = "13564137186";
+
+        // p2
+        update_faimly.p2_name = "成人参赛者2更新姓名";
+        update_faimly.p2_sex = "女"; //("男", "女")
+        update_faimly.p2_birthday = "1991-01-11";
+        update_faimly.p2_teesize = "L(175/92A)"; //("XS(160/82A)", "S(165/84A)", "M(170/88A)", "L(175/92A)", "XL(180/96A)", "XLL(185/100A)")
+
+        update_faimly.p2_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
+        update_faimly.p2_card_number = "2806821991010900025";
+        update_faimly.p2_phone = "13816954340";
+
+        update_faimly.p2_emergency_name = "紧急联系人";
+        update_faimly.p2_emergency_phone = "13564137187";
+
+        // kids
+        update_faimly.kids_name = "未成年参赛者更新姓名";
+        update_faimly.kids_sex = "女"; //("男", "女")
+        update_faimly.kids_birthday = "2000-01-11";
+        update_faimly.kids_teesize = "110以下"; //("110以下"), "110-130")
+
+        update_faimly.kids_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
+        update_faimly.kids_card_number = "2806821991010900026";
+        update_faimly.kids_guardian_name = "法定监护人姓名";
+        update_faimly.kids_guardian_phone = "13564137188";
+
+        update_faimly.kids_emergency_name = "紧急联系人";
+        update_faimly.kids_emergency_phone = "13564137189";
+
+        // package
+        update_faimly.pakcage_get_way = "顺丰到付";//("顺丰到付"), "现场领取")
+        update_faimly.pakcage_get_name = "成人参赛者姓名";
+        update_faimly.pakcage_get_phone = "13564137185";
+        update_faimly.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
+
+        // payment
+        update_faimly.out_trade_no = md5(update_faimly.p1_card_number + update_faimly.p2_card_number + update_faimly.kids_card_number); // md5(update_faimly.p1_card_number + update_faimly.p2_card_number + update_faimly.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
+//        update_faimly.pay_status = "";
+//        update_faimly.transaction_id = "";
+//        update_faimly.transaction_date = "";
+//
+//        // race result
+//        update_faimly.p1_race_number = "";
+//        update_faimly.p2_race_number = "";
+//        update_faimly.kids_race_number = "";
+//        update_faimly.race_time = "";
+
+        // action
+        update_faimly.action = "update"; // ("update", "update")
+
+        $.post('/user/add', update_faimly, function(data){
+            var data = typeof data == "object" ? data : JSON.parse(data);
+            console.log("=========接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作(家庭跑)");
+            console.log(data.rs);
+        }, "JSON");
+
+
+
+
+        //  ===============================接口:查询参赛信息
         var card_number = "2806821991010900024"; // 如果是家庭跑，输入家庭中任意一个人的证件号码均可
         $.getJSON('/user/id/' + card_number, function(data){
             var data = typeof data == "object" ? data : JSON.parse(data);
@@ -586,7 +786,9 @@
 
 
 
-        // 接口:查询库存信息
+
+
+        //  ===============================接口:查询库存信息
         $.getJSON('/stock/get', function(data){
             var data = typeof data == "object" ? data : JSON.parse(data);
             console.log("=========接口:查询库存信息");
@@ -594,7 +796,13 @@
                 console.log(data[0]);
         });
 
-        // 支付回调接口
+
+
+
+
+
+
+        //  ===============================支付回调接口
         var notify = {"appid":"wxc6d26827fed8ccc6",
                         "attach":"100\u5143\u4e00\u822c\u8dd1",
                         "bank_type":"CFT",

@@ -160,16 +160,16 @@ class RacerController extends Controller
                 foreach ($models as $model)
                 {
                     if($model->p1_card_number == $p1_card_number && strrpos($message, $p1_card_number) == false)
-                        $message .= "证件号码: ".$p1_card_number." 已报名, " + $model->pay_status;
+                        $message .= "证件号码: ".$p1_card_number." 已报名(".$model->pay_status.")";
 
                     if($model->p2_card_number == $p2_card_number && strrpos($message, $p2_card_number) == false)
                     {
-                        $message .= ($message == "" ? "": ", ")."证件号码: ".$p2_card_number." 已报名, " + $model->pay_status;;
+                        $message .= ($message == "" ? "": ", ")."证件号码: ".$p2_card_number." 已报名(".$model->pay_status.")";
                     }
 
                     if($model->kids_card_number == $kids_card_number && strrpos($message, $kids_card_number) == false)
                     {
-                        $message .= ($message == "" ? "": ", ")."证件号码: ".$kids_card_number." 已报名, " + $model->pay_status;;;
+                        $message .= ($message == "" ? "": ", ")."证件号码: ".$kids_card_number." 已报名, ".$model->pay_status.")";
                     }
                 }
 
