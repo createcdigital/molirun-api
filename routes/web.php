@@ -16,6 +16,8 @@ $app->get('user/id/{card_number}', 'RacerController@getByCardNumber');
 
 $app->get('stock/get', 'StockController@get');
 
+$app->get('coupon/verify/{code}', 'CouponController@getCouponByCode');
+
 $app->post('wxpay/callback', 'WXPayController@notify');
 
 $app->get('/', function(){

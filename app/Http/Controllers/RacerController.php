@@ -121,9 +121,15 @@ class RacerController extends Controller
 
         // payment
         $model->out_trade_no = $request->out_trade_no;
-        $model->pay_status = "未支付";
-//            $model->transaction_id = $request->transaction_id;
-//            $model->transaction_date = $request->transaction_date;
+        if(isset($request->pay_status) && isset($request->transaction_id))
+        {
+            $model->pay_status = $request->pay_status;
+            $model->transaction_id = $request->transaction_id;
+            $model->transaction_date = $request->transaction_date;
+        }
+        else
+            $model->pay_status = "未支付";
+
 //
 //            // race result
 //            $model->p1_race_number = $request->p1_race_number;
