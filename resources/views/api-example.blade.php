@@ -101,7 +101,7 @@
 
 
 
-        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(家庭跑)
+        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(亲子跑)
         var user = {};
         user.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
         user.nickname = "coton_chen";
@@ -113,7 +113,7 @@
         user.subscribe_time = "";
 
         // form
-        user.grouptype = "家庭跑"; // ("5km", "10km", "family")
+        user.grouptype = "亲子跑"; // ("5km", "10km", "family")
         user.p1_tag = "#极限运动";
 
         // p1
@@ -179,7 +179,7 @@
 
         $.post('/user/add', user, function(data){
         var data = typeof data == "object" ? data : JSON.parse(data);
-        console.log("=========接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(家庭跑)");
+        console.log("=========接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(亲子跑)");
         console.log(data.rs);
         }, "JSON");
 
@@ -274,7 +274,7 @@
 
 
 
-        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作(家庭跑)
+        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作(亲子跑)
         var update_faimly = {};
         update_faimly.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
         update_faimly.nickname = "coton_chen";
@@ -286,7 +286,7 @@
         update_faimly.subscribe_time = "";
 
         // form
-        update_faimly.grouptype = "家庭跑"; // ("5km", "10km", "family")
+        update_faimly.grouptype = "亲子跑"; // ("5km", "10km", "family")
         update_faimly.p1_tag = "#极限运动";
 
         // p1
@@ -352,7 +352,7 @@
 
         $.post('/user/add', update_faimly, function(data){
         var data = typeof data == "object" ? data : JSON.parse(data);
-        console.log("=========接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作(家庭跑)");
+        console.log("=========接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作(亲子跑)");
         console.log(data.rs);
         }, "JSON");
 
@@ -360,7 +360,7 @@
 
 
         //  ===============================接口:查询参赛信息
-        var card_number = "2806821991010900024"; // 如果是家庭跑，输入家庭中任意一个人的证件号码均可
+        var card_number = "2806821991010900024"; // 如果是亲子跑，输入家庭中任意一个人的证件号码均可
         $.getJSON('/user/id/' + card_number, function(data){
         var data = typeof data == "object" ? data : JSON.parse(data);
         console.log("=========接口:查询参赛信息");
@@ -517,7 +517,7 @@
 
 
 
-        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(家庭跑)
+        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(亲子跑)
         var user = {};
         user.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
         user.nickname = "coton_chen";
@@ -529,7 +529,7 @@
         user.subscribe_time = "";
 
         // form
-        user.grouptype = "家庭跑"; // ("5km", "10km", "family")
+        user.grouptype = "亲子跑"; // ("5km", "10km", "family")
         user.p1_tag = "#极限运动";
 
         // p1
@@ -595,7 +595,7 @@
 
         $.post('/user/add', user, function(data){
             var data = typeof data == "object" ? data : JSON.parse(data);
-            console.log("=========接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(家庭跑)");
+            console.log("=========接口:新增参赛信息(接收到微信成功付款后自动更新库存) 新增操作(亲子跑)");
             console.log(data.rs);
         }, "JSON");
 
@@ -690,7 +690,7 @@
 
 
 
-        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作(家庭跑)
+        //  ===============================接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作(亲子跑)
         var update_faimly = {};
         update_faimly.openid = "onlckwtzdvnbeVhpTDJ7C-J103bc";
         update_faimly.nickname = "coton_chen";
@@ -702,7 +702,7 @@
         update_faimly.subscribe_time = "";
 
         // form
-        update_faimly.grouptype = "家庭跑"; // ("5km", "10km", "family")
+        update_faimly.grouptype = "亲子跑"; // ("5km", "10km", "family")
         update_faimly.p1_tag = "#极限运动";
 
         // p1
@@ -768,7 +768,7 @@
 
         $.post('/user/add', update_faimly, function(data){
             var data = typeof data == "object" ? data : JSON.parse(data);
-            console.log("=========接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作(家庭跑)");
+            console.log("=========接口:新增参赛信息(接收到微信成功付款后自动更新库存) 更新操作(亲子跑)");
             console.log(data.rs);
         }, "JSON");
 
@@ -776,7 +776,7 @@
 
 
         //  ===============================接口:查询参赛信息
-        var card_number = "2806821991010900024"; // 如果是家庭跑，输入家庭中任意一个人的证件号码均可
+        var card_number = "2806821991010900024"; // 如果是亲子跑，输入家庭中任意一个人的证件号码均可
         $.getJSON('/user/id/' + card_number, function(data){
             var data = typeof data == "object" ? data : JSON.parse(data);
             console.log("=========接口:查询参赛信息");
@@ -827,6 +827,24 @@
             console.log("=========接口:支付回调接口");
             console.log(data.rs);
         }, "JSON");
+
+
+
+
+
+
+
+        //  ==============================邀请码验证接口
+        var coupon_code = "CN2002001";
+        $.getJSON('/coupon/verify/' + coupon_code, function(data){
+            var data = typeof data == "object" ? data : JSON.parse(data);
+            console.log("=========接口:邀请码验证接口");
+            if(data.length > 0)
+                console.log(data[0]);
+            else
+                console.log("邀请码无效");
+        });
+
     });
 </script>
 </body>

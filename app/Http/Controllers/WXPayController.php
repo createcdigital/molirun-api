@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Coupon;
+use App\Models\CouponLog;
 use App\Models\Racer;
 use App\Models\Stock;
 use Illuminate\Support\Facades\DB;
@@ -32,20 +34,28 @@ class WXPayController extends Controller
             $openid = $request->openid;
             $time_end = $request->time_end;
             $attach = $request->attach;
+            $trade_type = $request->trade_type;
 
-            Log::info("===notify, start ===transaction_id:".$transaction_id.", out_trade_no:" .$out_trade_no.", result_code:".$result_code.", result_code:".$result_code.", openid:".$openid.", time_end:".$time_end.", attach:".$attach);
+            Log::info("===notify, start ===transaction_id:".$transaction_id.", out_trade_no:" .$out_trade_no.", result_code:".$result_code.", result_code:".$result_code.", openid:".$openid.", time_end:".$time_end.", attach:".$attach.", trade_type:".$trade_type);
 
             $model = Racer::where('out_trade_no', $out_trade_no)->first();
             if(isset($model) && $model -> transaction_id == "" && $model -> pay_status == "未支付" && $model -> transaction_date  == "")
             {
-                $model -> pay_status = "已支付";
+                $model -> pay_status = $trade_type == "COUPON" ? "邀请码支付": "已支付";
                 $model -> transaction_id = $transaction_id;
                 $model -> transaction_date = $time_end;
+                
                 if($model -> save())
                 {
+                    Log::info("===notify, end   ===transaction_id:".$transaction_id.", out_trade_no:" .$out_trade_no.", 更新支付状态成功!");
+
                     $this->updateStock($model);
 
-                    Log::info("===notify, end   ===transaction_id:".$transaction_id.", out_trade_no:" .$out_trade_no.", 更新支付状态成功!");
+                    if($trade_type == "COUPON")
+                    {
+                        $this->updateCoupon($transaction_id);
+                        $this->addCouponLog($transaction_id, $out_trade_no);
+                    }
 
                     return json_encode(["rs" => "success"]);
                 }
@@ -75,7 +85,7 @@ class WXPayController extends Controller
 
         try
         {
-            $model = Stock::first();
+            $model = Stock::lockForUpdate()->first();
 
             if(isset($model))
             {
@@ -86,12 +96,12 @@ class WXPayController extends Controller
                     case "10km":
                         $model->group_type_single -= 1;
                         break;
-                    case "家庭跑":
+                    case "亲子跑":
                         $model->group_type_family -= 1;
                         break;
                 }
 
-                if($grouptype == "家庭跑")
+                if($grouptype == "亲子跑")
                 {
                     switch($p1_teesize)
                     {
@@ -183,6 +193,34 @@ class WXPayController extends Controller
             Log::info("===updateStock, 更新库存失败, 错误信息: " .$e->getMessage());
         }
 
-}
+    }
+    
+    protected function updateCoupon($coupon_code)
+    {
+
+        // 并发锁(悲观锁)
+        DB::beginTransaction();
+
+        try
+        {
+            Coupon::where('code', $coupon_code)->lockForUpdate()->increment('number_of_use');
+
+            DB::commit();
+
+        }catch (\Exception $e) {
+            DB:rollBack();
+
+            Log::info("===updateCoupon, 更新邀请码使用次数失败, 错误信息: " .$e->getMessage());
+        }
+    }
+
+
+    protected function addCouponLog($coupon_code, $out_trade_no)
+    {
+        $model = new CouponLog();
+        $model->code = $coupon_code;
+        $model->out_trade_no = $out_trade_no;
+        $model->save();
+    }
     
 }

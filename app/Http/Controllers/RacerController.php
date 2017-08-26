@@ -70,7 +70,7 @@ class RacerController extends Controller
         $model->subscribe_time = $request->subscribe_time;
 
         // form
-        $model->grouptype = $request->grouptype; // 0:5km, 1:10km, 2:家庭跑
+        $model->grouptype = $request->grouptype; // 0:5km, 1:10km, 2:亲子跑
         $model->p1_tag = $request->p1_tag;
 
         // p1
@@ -121,21 +121,15 @@ class RacerController extends Controller
 
         // payment
         $model->out_trade_no = $request->out_trade_no;
-        if(isset($request->pay_status) && isset($request->transaction_id))
-        {
-            $model->pay_status = $request->pay_status;
-            $model->transaction_id = $request->transaction_id;
-            $model->transaction_date = $request->transaction_date;
-        }
-        else
-            $model->pay_status = "未支付";
-
+        $model->pay_status = "未支付";
+//        $model->transaction_id = $request->transaction_id;
+//        $model->transaction_date = $request->transaction_date;
 //
-//            // race result
-//            $model->p1_race_number = $request->p1_race_number;
-//            $model->p2_race_number = $request->p2_race_number;
-//            $model->kids_race_number = $request->kids_race_number;
-//            $model->race_time = $request->race_time;
+//        // race result
+//        $model->p1_race_number = $request->p1_race_number;
+//        $model->p2_race_number = $request->p2_race_number;
+//        $model->kids_race_number = $request->kids_race_number;
+//        $model->race_time = $request->race_time;
 
 
         if ($model->save())
