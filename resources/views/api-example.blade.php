@@ -77,7 +77,7 @@
         fivekm_user.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
 
         // payment
-        fivekm_user.out_trade_no = md5(fivekm_user.p1_card_number + fivekm_user.p2_card_number + fivekm_user.kids_card_number); // md5(fivekm_user.p1_card_number + fivekm_user.p2_card_number + fivekm_user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
+        fivekm_user.out_trade_no = md5(new Date().getTime() + fivekm_user.p1_card_number + fivekm_user.p2_card_number + fivekm_user.kids_card_number); // md5(fivekm_user.p1_card_number + fivekm_user.p2_card_number + fivekm_user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
         //        fivekm_user.pay_status = "";
         //        fivekm_user.transaction_id = "";
         //        fivekm_user.transaction_date = "";
@@ -163,7 +163,7 @@
         user.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
 
         // payment
-        user.out_trade_no = md5(user.p1_card_number + user.p2_card_number + user.kids_card_number); // md5(user.p1_card_number + user.p2_card_number + user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
+        user.out_trade_no = md5(new Date().getTime() + user.p1_card_number + user.p2_card_number + user.kids_card_number); // md5(user.p1_card_number + user.p2_card_number + user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
         //        user.pay_status = "";
         //        user.transaction_id = "";
         //        user.transaction_date = "";
@@ -250,7 +250,7 @@
         update_user.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
 
         // payment
-        update_user.out_trade_no = md5(update_user.p1_card_number + update_user.p2_card_number + update_user.kids_card_number); // md5(update_user.p1_card_number + update_user.p2_card_number + update_user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
+        update_user.out_trade_no = md5(new Date().getTime() + update_user.p1_card_number + update_user.p2_card_number + update_user.kids_card_number); // md5(update_user.p1_card_number + update_user.p2_card_number + update_user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
         //        update_user.pay_status = "";
         //        update_user.transaction_id = "";
         //        update_user.transaction_date = "";
@@ -336,7 +336,7 @@
         update_faimly.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
 
         // payment
-        update_faimly.out_trade_no = md5(update_faimly.p1_card_number + update_faimly.p2_card_number + update_faimly.kids_card_number); // md5(update_faimly.p1_card_number + update_faimly.p2_card_number + update_faimly.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
+        update_faimly.out_trade_no = md5(new Date().getTime() + update_faimly.p1_card_number + update_faimly.p2_card_number + update_faimly.kids_card_number); // md5(update_faimly.p1_card_number + update_faimly.p2_card_number + update_faimly.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
         //        update_faimly.pay_status = "";
         //        update_faimly.transaction_id = "";
         //        update_faimly.transaction_date = "";
@@ -493,7 +493,7 @@
         fivekm_user.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
 
         // payment
-        fivekm_user.out_trade_no = md5(fivekm_user.p1_card_number + fivekm_user.p2_card_number + fivekm_user.kids_card_number); // md5(fivekm_user.p1_card_number + fivekm_user.p2_card_number + fivekm_user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
+        fivekm_user.out_trade_no = md5(new Date().getTime() + fivekm_user.p1_card_number + fivekm_user.p2_card_number + fivekm_user.kids_card_number); // md5(fivekm_user.p1_card_number + fivekm_user.p2_card_number + fivekm_user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
 //        fivekm_user.pay_status = "";
 //        fivekm_user.transaction_id = "";
 //        fivekm_user.transaction_date = "";
@@ -579,7 +579,7 @@
         user.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
 
         // payment
-        user.out_trade_no = md5(user.p1_card_number + user.p2_card_number + user.kids_card_number); // md5(user.p1_card_number + user.p2_card_number + user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
+        user.out_trade_no = md5(new Date().getTime() + user.p1_card_number + user.p2_card_number + user.kids_card_number); // md5(user.p1_card_number + user.p2_card_number + user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
 //        user.pay_status = "";
 //        user.transaction_id = "";
 //        user.transaction_date = "";
@@ -666,7 +666,7 @@
         update_user.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
 
         // payment
-        update_user.out_trade_no = md5(update_user.p1_card_number + update_user.p2_card_number + update_user.kids_card_number); // md5(update_user.p1_card_number + update_user.p2_card_number + update_user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
+        update_user.out_trade_no = md5(new Date().getTime() + update_user.p1_card_number + update_user.p2_card_number + update_user.kids_card_number); // md5(update_user.p1_card_number + update_user.p2_card_number + update_user.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
 //        update_user.pay_status = "";
 //        update_user.transaction_id = "";
 //        update_user.transaction_date = "";
@@ -752,7 +752,7 @@
         update_faimly.pakcage_get_address = "上海市静安区江宁路631号6号楼203室";
 
         // payment
-        update_faimly.out_trade_no = md5(update_faimly.p1_card_number + update_faimly.p2_card_number + update_faimly.kids_card_number); // md5(update_faimly.p1_card_number + update_faimly.p2_card_number + update_faimly.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
+        update_faimly.out_trade_no = md5(new Date().getTime() + update_faimly.p1_card_number + update_faimly.p2_card_number + update_faimly.kids_card_number); // md5(update_faimly.p1_card_number + update_faimly.p2_card_number + update_faimly.kids_card_number), see:https://github.com/blueimp/JavaScript-MD5
 //        update_faimly.pay_status = "";
 //        update_faimly.transaction_id = "";
 //        update_faimly.transaction_date = "";
