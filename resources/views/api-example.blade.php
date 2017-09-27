@@ -60,7 +60,7 @@
         fivekm_user.kids_name = "";
         fivekm_user.kids_sex = ""; //("男", "女")
         fivekm_user.kids_birthday = "";
-        fivekm_user.kids_teesize = ""; //("110以下"), "110-130")
+        fivekm_user.kids_teesize = ""; //("110cm以下"), "110cm-130cm")
 
         fivekm_user.kids_card_type = ""; // ("身份证", "护照", "港澳通行证", "台胞证")
         fivekm_user.kids_card_number = "";
@@ -146,7 +146,7 @@
         user.kids_name = "未成年参赛者姓名";
         user.kids_sex = "女"; //("男", "女")
         user.kids_birthday = "2000-01-11";
-        user.kids_teesize = "110以下"; //("110以下"), "110-130")
+        user.kids_teesize = "110cm以下"; //("110cm以下"), "110cm-130cm")
 
         user.kids_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
         user.kids_card_number = "2806821991010900026";
@@ -233,7 +233,7 @@
         update_user.kids_name = "";
         update_user.kids_sex = ""; //("男", "女")
         update_user.kids_birthday = "";
-        update_user.kids_teesize = ""; //("110以下"), "110-130")
+        update_user.kids_teesize = ""; //("110cm以下"), "110cm-130cm")
 
         update_user.kids_card_type = ""; // ("身份证", "护照", "港澳通行证", "台胞证")
         update_user.kids_card_number = "";
@@ -319,7 +319,7 @@
         update_faimly.kids_name = "未成年参赛者更新姓名";
         update_faimly.kids_sex = "女"; //("男", "女")
         update_faimly.kids_birthday = "2000-01-11";
-        update_faimly.kids_teesize = "110以下"; //("110以下"), "110-130")
+        update_faimly.kids_teesize = "110cm以下"; //("110cm以下"), "110cm-130cm")
 
         update_faimly.kids_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
         update_faimly.kids_card_number = "2806821991010900026";
@@ -476,7 +476,7 @@
         fivekm_user.kids_name = "";
         fivekm_user.kids_sex = ""; //("男", "女")
         fivekm_user.kids_birthday = "";
-        fivekm_user.kids_teesize = ""; //("110以下"), "110-130")
+        fivekm_user.kids_teesize = ""; //("110cm以下"), "110cm-130cm")
 
         fivekm_user.kids_card_type = ""; // ("身份证", "护照", "港澳通行证", "台胞证")
         fivekm_user.kids_card_number = "";
@@ -562,7 +562,7 @@
         user.kids_name = "未成年参赛者姓名";
         user.kids_sex = "女"; //("男", "女")
         user.kids_birthday = "2000-01-11";
-        user.kids_teesize = "110以下"; //("110以下"), "110-130")
+        user.kids_teesize = "110cm以下"; //("110cm以下"), "110cm-130cm")
 
         user.kids_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
         user.kids_card_number = "2806821991010900026";
@@ -649,7 +649,7 @@
         update_user.kids_name = "";
         update_user.kids_sex = ""; //("男", "女")
         update_user.kids_birthday = "";
-        update_user.kids_teesize = ""; //("110以下"), "110-130")
+        update_user.kids_teesize = ""; //("110cm以下"), "110cm-130cm")
 
         update_user.kids_card_type = ""; // ("身份证", "护照", "港澳通行证", "台胞证")
         update_user.kids_card_number = "";
@@ -735,7 +735,7 @@
         update_faimly.kids_name = "未成年参赛者更新姓名";
         update_faimly.kids_sex = "女"; //("男", "女")
         update_faimly.kids_birthday = "2000-01-11";
-        update_faimly.kids_teesize = "110以下"; //("110以下"), "110-130")
+        update_faimly.kids_teesize = "110cm以下"; //("110cm以下"), "110cm-130cm")
 
         update_faimly.kids_card_type = "身份证"; // ("身份证", "护照", "港澳通行证", "台胞证")
         update_faimly.kids_card_number = "2806821991010900026";
